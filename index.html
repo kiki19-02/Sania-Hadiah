@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenge Cinta Sania!</title>
+    <title>Challenge Cinta Sania (ULTI!)</title>
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -13,7 +13,7 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-image: linear-gradient(to bottom, #ffc3a0 0%, #ffafbd 100%); /* Gradien pink-orange */
+            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46e8f4, #5ffbf1); /* Gradien unik */
             color: #4a4a4a;
             text-align: center;
             overflow: hidden;
@@ -22,7 +22,7 @@
             background-color: rgba(255, 255, 255, 0.95);
             padding: 40px;
             border-radius: 25px;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
             max-width: 600px;
             width: 90%;
             margin: 20px;
@@ -30,14 +30,14 @@
             z-index: 10;
         }
         h1 {
-            color: #d81b60; /* Merah muda gelap */
-            font-size: 3em;
+            color: #8338ec; /* Ungu cerah */
+            font-size: 3.5em;
             margin-bottom: 20px;
-            text-shadow: 2px 2px #f8bbd0;
+            text-shadow: 3px 3px #bbdefb;
         }
         h2 {
-            color: #ff5252; /* Merah cerah */
-            font-size: 2em;
+            color: #ff006e; /* Pink neon */
+            font-size: 2.5em;
             margin-bottom: 15px;
         }
         p {
@@ -46,7 +46,7 @@
             margin-bottom: 25px;
         }
         button {
-            background-color: #ff5252;
+            background-color: #ff006e;
             color: white;
             border: none;
             padding: 15px 30px;
@@ -56,11 +56,11 @@
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             margin: 10px;
-            text-decoration: none; /* Untuk tombol yang juga link */
-            display: inline-block; /* Untuk tombol yang juga link */
+            text-decoration: none;
+            display: inline-block;
         }
         button:hover {
-            background-color: #d81b60;
+            background-color: #c90059;
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
@@ -74,9 +74,9 @@
             margin-top: 20px;
         }
         #quizGameArea .option-button {
-            background-color: #ffe082; /* Kuning muda */
-            color: #5d4037; /* Cokelat gelap */
-            border: 2px solid #ffca28;
+            background-color: #8ecae6; /* Biru muda */
+            color: #023047; /* Biru gelap */
+            border: 2px solid #219ebc;
             padding: 12px 20px;
             border-radius: 25px;
             font-size: 1.1em;
@@ -86,25 +86,46 @@
             max-width: calc(50% - 20px);
         }
         #quizGameArea .option-button:hover {
-            background-color: #ffca28;
+            background-color: #219ebc;
+            color: white;
             transform: translateY(-2px);
         }
         #quizGameArea .option-button.correct {
-            background-color: #a5d6a7; /* Hijau saat benar */
+            background-color: #a5d6a7;
             border-color: #66bb6a;
         }
         #quizGameArea .option-button.wrong {
-            background-color: #ef9a9a; /* Merah saat salah */
+            background-color: #ef9a9a;
             border-color: #e57373;
         }
         #quizGameArea .option-button:disabled {
             opacity: 0.7;
             cursor: not-allowed;
         }
+        #quizGameArea input[type="text"] {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #219ebc;
+            font-size: 1.1em;
+            width: calc(100% - 24px);
+            max-width: 300px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        #quizGameArea input[type="text"]:focus {
+            outline: none;
+            border-color: #ff006e;
+            box-shadow: 0 0 0 3px rgba(255, 0, 110, 0.2);
+        }
         #quizFeedback {
             margin-top: 15px;
             font-weight: bold;
             color: #d32f2f;
+        }
+        #quizCount {
+            font-size: 1.1em;
+            margin-top: 15px;
+            color: #8338ec;
         }
 
         /* Hasil Quiz */
@@ -123,11 +144,17 @@
         }
         .whatsapp-button {
             background-color: #25D366; /* Warna WhatsApp */
-            border: none;
-            color: white;
         }
         .whatsapp-button:hover {
             background-color: #1DA851;
+        }
+        #successImage {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 3px solid #ff006e; /* Border agar lebih menonjol */
         }
 
         /* Efek confetti untuk kemenangan */
@@ -150,8 +177,8 @@
 <body>
     <div class="container" id="introContainer">
         <h1>Challenge Spesial Untuk Sania! ✨</h1>
-        <p>Aku punya sebuah tantangan seru buat kamu! Jawab 5 pertanyaan ini dengan benar. Kalau kamu berhasil, ada hadiah spesial. Kalau tidak... ada tantangan lucu menunggu! 😉</p>
-        <button onclick="startQuiz()">Mulai Tantangan!</button>
+        <p>Aku punya sebuah tantangan seru buat kamu! Jawab **20 pertanyaan acak** ini dengan benar. Ada hadiah dan konsekuensi lucu menunggu! 😉</p>
+        <button onclick="startQuiz()">Mulai Tantangan Gila!</button>
     </div>
 
     <div class="container" id="quizGameArea" style="display: none;">
@@ -159,150 +186,308 @@
         <p id="quizQuestion"></p>
         <div id="optionsContainer" class="options-container">
             </div>
+        <input type="text" id="textAnswerInput" placeholder="Ketik jawabanmu di sini..." style="display: none;">
+        <button id="submitTextAnswerBtn" onclick="checkTextAnswer()" style="display: none;">Kirim Jawaban</button>
+        
         <p id="quizFeedback"></p>
-        <p>Skor sementara: <span id="currentScore">0</span> / 5</p>
+        <p id="quizCount">Pertanyaan <span id="currentQuestionNumber">1</span> / <span id="totalQuestionsCount">20</span></p>
+        <p>Skor benar: <span id="currentScore">0</span></p>
     </div>
 
     <div class="container" id="resultArea" style="display: none;">
         <div id="successResult">
-            <h2 class="result-message success-message">WOW! Kamu HEBAT! 🎉</h2>
-            <p style="font-size: 1.2em;">Selamat, Sania! Kamu berhasil menjawab semua pertanyaan dengan sempurna! Kamu memang yang terbaik dan paling kenal aku!</p>
-            <p style="font-size: 1.2em;">Sekarang, klik tombol di bawah ini untuk mengklaim hadiah spesialmu dan kirim pesan ke aku! 😉</p>
-            <a id="whatsappSuccessBtn" href="#" target="_blank" class="whatsapp-button button">Klaim Hadiah Via WhatsApp!</a>
+            <h2 class="result-message success-message">EDAN! Kamu HEBAT BANGET! 🎉</h2>
+            <p style="font-size: 1.2em;">Selamat, Sania! Kamu berhasil menjawab <span id="finalScoreSuccess"></span> dari 20 pertanyaan dengan sempurna! Kamu memang yang paling jago dan paling kenal aku!</p>
+            <p style="font-size: 1.5em; color: #8338ec; font-weight: bold;">Hadiahmu spesial dari aku, ini dia! 😉</p>
+            <img id="successImage" src="https://i.imgur.com/iliNnu4.jpeg" alt="Hadiah Spesial Kaka">
+            <button onclick="startQuiz()">Main Lagi!</button>
         </div>
 
         <div id="failResult" style="display: none;">
             <h2 class="result-message fail-message">Ups! Belum Berhasil Sania! 😅</h2>
-            <p style="font-size: 1.2em;">Sayang sekali, kamu belum berhasil menjawab semua pertanyaan dengan benar...</p>
-            <p style="font-size: 1.2em;">Tapi tenang aja, ini bukan akhir dunia! Justru ini awal dari tantangan seru kita berikutnya!</p>
-            <p style="font-size: 1.5em; color: #ff5252; font-weight: bold;">Tantanganmu: Kirim "PAP 50" ke aku sekarang juga! 😂 (Selfie lucu, ekspresi konyol, bebas!)</p>
-            <p style="font-size: 1.1em; margin-top: 20px;">Habis itu, kamu boleh coba lagi ya! 😉</p>
+            <p style="font-size: 1.2em;">Sayang sekali, kamu hanya menjawab <span id="finalScoreFail"></span> pertanyaan dengan benar.</p>
+            <p style="font-size: 1.5em; color: #ff006e; font-weight: bold;">Tantanganmu: Kirim "PAP 50" ke aku sekarang juga! 😂 (Selfie lucu, ekspresi konyol, bebas!)</p>
+            <p style="font-size: 1.1em; margin-top: 20px;">Klik tombol di bawah untuk kirim PAP 50 ke aku. Jangan curang ya! 😉</p>
+            <a id="whatsappFailBtn" href="#" target="_blank" class="whatsapp-button button">Kirim PAP 50 Sekarang!</a>
             <button onclick="startQuiz()">Coba Lagi Tantangannya!</button>
         </div>
     </div>
 
     <script>
-        const quizQuestions = [
+        const originalQuizQuestions = [
             {
+                type: "mc",
                 question: "Apa nama lengkap pacar Sania?",
                 options: ["Kaka Ganteng Aja", "Kaka Kurniawan Ganteng Banget", "Kaka Sania", "Kaka Kurniawan Aja"],
                 answer: "kaka kurniawan ganteng banget"
             },
             {
-                question: "Siapa nama bapak pacar Sania?",
+                type: "mc",
+                question: "Sudah PAP belum hari ini?",
+                options: ["Sudah Dong", "Belum", "Lupa", "Rahasia"],
+                answer: "belum"
+            },
+            {
+                type: "mc",
+                question: "Pas momen apa terakhir ke rumah Kaka?",
+                options: ["Ulang Tahun", "Idul Fitri", "Graduation", "Liburan"],
+                answer: "graduation"
+            },
+            {
+                type: "text",
+                question: "Kapan tanggal jadian kita? (contoh: 15 Juni)",
+                answer: "15 juni" // Ganti dengan tanggal jadian kalian yang sebenarnya!
+            },
+            {
+                type: "mc",
+                question: "Siapa nama lengkap pacar Sania?",
+                options: ["Kaka Kurniawan Ganteng", "Kaka Kurniawan", "Kaka Pradipta", "Kaka Ramadhan"],
+                answer: "kaka kurniawan"
+            },
+            {
+                type: "mc",
+                question: "Apa makanan kesukaan pacar Sania?",
+                options: ["Pizza", "Sate", "Apa aja yang penting bisa dimakan", "Nasi Padang"],
+                answer: "apa aja yang penting bisa dimakan"
+            },
+            {
+                type: "mc",
+                question: "Apa nama akun IG pacar Sania?",
+                options: ["kaka_kurniawan", "kakaaaaaaa____", "kaka.ganteng", "kaka_official"],
+                answer: "kakaaaaaaa____"
+            },
+            {
+                type: "mc",
+                question: "Kapan Indonesia merdeka?",
+                options: ["17 Agustus 1945", "18 Agustus 1945", "17 Juli 1945", "17 Agustus 1946"],
+                answer: "17 agustus 1945"
+            },
+            {
+                type: "mc",
+                question: "Loveyouuu...",
+                options: ["Loveyoutoo", "I Love You More", "Makasih", "Aku juga"],
+                answer: "loveyoutoo"
+            },
+            {
+                type: "mc",
+                question: "Siapa nama Bapak pacar Sania?",
                 options: ["Bapak Budi", "Bapak Agus", "Bapak Ajat", "Bapak Kaka"],
                 answer: "bapak ajat"
             },
             {
-                question: "Kapan tanggal jadian kita?",
-                options: ["11 Januari", "11 Februari", "12 Februari", "10 Februari"],
-                answer: "11 februari"
+                type: "mc",
+                question: "Kapan kita main bareng lagi?",
+                options: ["Besok", "Minggu Depan", "Nanti Aja", "Sekarang Juga"],
+                answer: "besok"
+            },
+            // Pertanyaan tambahan tentang band favorit (total 20 - 11 = 9 pertanyaan)
+            {
+                type: "mc",
+                question: "Siapa vokalis utama band Slipknot?",
+                options: ["Corey Taylor", "M. Shadows", "Jonathan Davis", "Till Lindemann"],
+                answer: "corey taylor"
             },
             {
-                question: "Makanan favorit kita berdua yang sering kita makan bareng?",
-                options: ["Bakso", "Nasi Goreng", "Mie Ayam", "Martabak"],
-                answer: "bakso"
+                type: "mc",
+                question: "Lagu 'Duality' yang ikonik itu milik band mana?",
+                options: ["Avenged Sevenfold", "Linkin Park", "Slipknot", "System of a Down"],
+                answer: "slipknot"
             },
             {
-                question: "Warna kesukaan siapa yang paling mirip dengan warna hati?",
-                options: ["Aku", "Kamu", "Mama", "Teman"],
-                answer: "kamu"
+                type: "mc",
+                question: "Apa nama album debut Avenged Sevenfold?",
+                options: ["City of Evil", "Waking the Fallen", "Sounding the Seventh Trumpet", "Nightmare"],
+                answer: "sounding the seventh trumpet"
+            },
+            {
+                type: "mc",
+                question: "Siapa nama drummer Avenged Sevenfold yang meninggal di tahun 2009?",
+                options: ["Mike Portnoy", "Jimmy 'The Rev' Sullivan", "Joey Jordison", "Travis Barker"],
+                answer: "jimmy 'the rev' sullivan"
+            },
+            {
+                type: "mc",
+                question: "Band mana yang dikenal dengan lagu 'Bat Country'?",
+                options: ["Slipknot", "System of a Down", "Avenged Sevenfold", "Bullet For My Valentine"],
+                answer: "avenged sevenfold"
+            },
+            {
+                type: "mc",
+                question: "Instrument apa yang khas dari member 'Sid Wilson' di Slipknot?",
+                options: ["Gitar", "Bass", "Turntables/DJ", "Drum"],
+                answer: "turntables/dj"
+            },
+            {
+                type: "mc",
+                question: "Dari band-band ini, mana yang berasal dari Iowa, Amerika Serikat?",
+                options: ["Metallica", "Avenged Sevenfold", "Slipknot", "Iron Maiden"],
+                answer: "slipknot"
+            },
+            {
+                type: "mc",
+                question: "Lagu 'Afterlife' yang populer itu dari album Avenged Sevenfold yang mana?",
+                options: ["City of Evil", "Avenged Sevenfold (Self-Titled)", "Nightmare", "The Stage"],
+                answer: "avenged sevenfold (self-titled)"
+            },
+            {
+                type: "mc",
+                question: "Band ini terkenal dengan logo 'Deathbat'. Siapa mereka?",
+                options: ["Disturbed", "Lamb of God", "Avenged Sevenfold", "Five Finger Death Punch"],
+                answer: "avenged sevenfold"
             }
         ];
+        
+        let shuffledQuestions = [];
         let currentQuestionIndex = 0;
         let score = 0;
-        const totalQuestions = quizQuestions.length;
+        const totalQuestions = originalQuizQuestions.length; // Total 20 pertanyaan
+        const minimumScoreForSuccess = 15; // Minimal benar 15 untuk menang
 
-        const whatsappNumber = "082295941919"; // Nomor HP lo
-        const whatsappSuccessMessage = "ez boss"; // Pesan WhatsApp otomatis
+        const whatsappFailNumber = "6282295941919"; // Nomor HP lo, pakai kode negara (62)
+        const whatsappFailMessage = "Kiriman 50 PAP dari aku karena kalah quiz nih! 😂 Aku janji ga curang!"; // Pesan WhatsApp otomatis untuk kalah
 
         function startQuiz() {
             document.getElementById('introContainer').style.display = 'none';
             document.getElementById('resultArea').style.display = 'none';
             document.getElementById('quizGameArea').style.display = 'block';
+            
+            // Shuffle questions
+            shuffledQuestions = [...originalQuizQuestions].sort(() => Math.random() - 0.5);
+            
             currentQuestionIndex = 0;
             score = 0;
             document.getElementById('currentScore').innerText = score;
+            document.getElementById('totalQuestionsCount').innerText = totalQuestions;
             displayQuestion();
         }
 
         function displayQuestion() {
             if (currentQuestionIndex < totalQuestions) {
-                const quizData = quizQuestions[currentQuestionIndex];
+                const quizData = shuffledQuestions[currentQuestionIndex];
                 document.getElementById('quizQuestion').innerText = quizData.question;
+                document.getElementById('quizFeedback').innerText = ''; 
+                document.getElementById('currentQuestionNumber').innerText = currentQuestionIndex + 1; // Update nomor pertanyaan
+
                 const optionsContainer = document.getElementById('optionsContainer');
-                optionsContainer.innerHTML = ''; 
-                document.getElementById('quizFeedback').innerText = ''; // Clear previous feedback
+                const textAnswerInput = document.getElementById('textAnswerInput');
+                const submitTextAnswerBtn = document.getElementById('submitTextAnswerBtn');
 
-                // Shuffle options
-                const shuffledOptions = [...quizData.options].sort(() => Math.random() - 0.5);
+                if (quizData.type === "mc") {
+                    optionsContainer.style.display = 'flex';
+                    textAnswerInput.style.display = 'none';
+                    submitTextAnswerBtn.style.display = 'none';
+                    optionsContainer.innerHTML = ''; // Clear previous options
 
-                shuffledOptions.forEach(option => {
-                    const button = document.createElement('button');
-                    button.classList.add('option-button');
-                    button.innerText = option;
-                    button.onclick = () => checkAnswer(option, quizData.answer, button);
-                    optionsContainer.appendChild(button);
-                });
+                    // Shuffle options for MC
+                    const shuffledOptions = [...quizData.options].sort(() => Math.random() - 0.5);
+
+                    shuffledOptions.forEach(option => {
+                        const button = document.createElement('button');
+                        button.classList.add('option-button');
+                        button.innerText = option;
+                        button.onclick = () => checkAnswer(option, quizData.answer, button, quizData.type);
+                        optionsContainer.appendChild(button);
+                    });
+                } else if (quizData.type === "text") {
+                    optionsContainer.style.display = 'none';
+                    textAnswerInput.style.display = 'block';
+                    submitTextAnswerBtn.style.display = 'block';
+                    textAnswerInput.value = ''; // Clear previous input
+                    textAnswerInput.focus(); // Auto-fokus input teks
+                    // Handle Enter key for text input
+                    textAnswerInput.onkeyup = function(event) {
+                        if (event.key === 'Enter') {
+                            checkAnswer(this.value, quizData.answer, null, quizData.type);
+                        }
+                    };
+                }
             } else {
                 showResult();
             }
         }
 
-        function checkAnswer(selectedOption, correctAnswer, clickedButton) {
-            const allOptionButtons = document.querySelectorAll('#optionsContainer .option-button');
-            allOptionButtons.forEach(button => button.disabled = true); // Disable all options after selection
-
+        function checkAnswer(selectedInput, correctAnswer, clickedButton = null, type) {
+            const userAnswer = selectedInput.toLowerCase().trim();
             const feedbackElement = document.getElementById('quizFeedback');
+            const isCorrect = (userAnswer === correctAnswer.toLowerCase().trim());
 
-            if (selectedOption.toLowerCase().trim() === correctAnswer.toLowerCase().trim()) {
-                feedbackElement.style.color = '#4CAF50';
-                feedbackElement.innerText = "Benar! Kamu memang hebat! 🎉";
-                clickedButton.classList.add('correct');
-                score++;
-            } else {
-                feedbackElement.style.color = '#d32f2f';
-                feedbackElement.innerText = "Kurang tepat, sayang! Coba lagi lain kali! 😉";
-                clickedButton.classList.add('wrong');
-                // Highlight correct answer
-                allOptionButtons.forEach(button => {
-                    if (button.innerText.toLowerCase().trim() === correctAnswer.toLowerCase().trim()) {
-                        button.classList.add('correct');
-                    }
-                });
+            if (type === "mc") {
+                const allOptionButtons = document.querySelectorAll('#optionsContainer .option-button');
+                allOptionButtons.forEach(button => button.disabled = true); // Disable all options after selection
+
+                if (isCorrect) {
+                    feedbackElement.style.color = '#4CAF50';
+                    feedbackElement.innerText = "Benar! Kamu memang hebat! 🎉";
+                    clickedButton.classList.add('correct');
+                    score++;
+                } else {
+                    feedbackElement.style.color = '#d32f2f';
+                    feedbackElement.innerText = "Kurang tepat, sayang! 😉";
+                    clickedButton.classList.add('wrong');
+                    // Highlight correct answer
+                    allOptionButtons.forEach(button => {
+                        if (button.innerText.toLowerCase().trim() === correctAnswer.toLowerCase().trim()) {
+                            button.classList.add('correct');
+                        }
+                    });
+                }
+            } else if (type === "text") {
+                const textAnswerInput = document.getElementById('textAnswerInput');
+                const submitTextAnswerBtn = document.getElementById('submitTextAnswerBtn');
+                textAnswerInput.disabled = true;
+                submitTextAnswerBtn.disabled = true;
+
+                if (isCorrect) {
+                    feedbackElement.style.color = '#4CAF50';
+                    feedbackElement.innerText = "Benar! Jawabanmu akurat! 🎉";
+                    score++;
+                } else {
+                    feedbackElement.style.color = '#d32f2f';
+                    feedbackElement.innerText = `Salah! Jawaban benar: "${correctAnswer}" 😉`;
+                }
             }
+            
             document.getElementById('currentScore').innerText = score;
 
             currentQuestionIndex++;
-            setTimeout(displayQuestion, 2000); // Move to next question after 2 seconds
+            setTimeout(displayQuestion, 2500); // Move to next question after 2.5 seconds
         }
+
+        function checkTextAnswer() {
+            const textAnswerInput = document.getElementById('textAnswerInput');
+            checkAnswer(textAnswerInput.value, shuffledQuestions[currentQuestionIndex].answer, null, "text");
+        }
+
 
         function showResult() {
             document.getElementById('quizGameArea').style.display = 'none';
             document.getElementById('resultArea').style.display = 'block';
+            document.getElementById('finalScoreSuccess').innerText = score;
+            document.getElementById('finalScoreFail').innerText = score;
 
-            if (score === totalQuestions) {
+            if (score >= minimumScoreForSuccess) {
                 // Success
                 document.getElementById('successResult').style.display = 'block';
-                document.getElementById('failResult').style.display = 'none';
+                tById('failResult').style.display = 'none'; //
                 triggerConfetti(); // Efek confetti untuk kemenangan
-                const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappSuccessMessage)}`;
-                document.getElementById('whatsappSuccessBtn').href = whatsappLink;
             } else {
                 // Fail
                 document.getElementById('successResult').style.display = 'none';
                 document.getElementById('failResult').style.display = 'block';
+                const whatsappLink = `https://wa.me/${whatsappFailNumber}?text=${encodeURIComponent(whatsappFailMessage)}`;
+                document.getElementById('whatsappFailBtn').href = whatsappLink;
             }
         }
 
         // Efek Confetti (sederhana)
         function triggerConfetti() {
             const confettiContainer = document.body;
-            for (let i = 0; i < 50; i++) { // 50 buah confetti
+            for (let i = 0; i < 70; i++) { // Lebih banyak confetti
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
                 confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.animationDuration = (Math.random() * 2 + 1) + 's'; // Durasi acak 1-3s
+                confetti.style.top = Math.random() * -100 + 'px'; // Mulai dari atas layar
+                confetti.style.animationDuration = (Math.random() * 2 + 3) + 's'; // Durasi acak 3-5s
                 confetti.style.animationDelay = Math.random() * 0.5 + 's'; // Delay acak 0-0.5s
                 confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`; // Warna acak
                 confettiContainer.appendChild(confetti);
