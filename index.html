@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenge Cinta Sania (ULTI!)</title>
+    <title>Challenge Cinta Sania (ULTIMATE!)</title>
     <style>
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Arial', sans-serif; /* Font lebih simple dan keren */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46e8f4, #5ffbf1); /* Gradien unik */
-            color: #4a4a4a;
+            background-image: linear-gradient(to right top, #a18cd1, #fbc2eb); /* Gradien ungu-pink lembut */
+            color: #333;
             text-align: center;
             overflow: hidden;
         }
         .container {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.98);
             padding: 40px;
             border-radius: 25px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
             max-width: 600px;
             width: 90%;
             margin: 20px;
@@ -30,13 +30,13 @@
             z-index: 10;
         }
         h1 {
-            color: #8338ec; /* Ungu cerah */
+            color: #6a1b9a; /* Ungu gelap */
             font-size: 3.5em;
             margin-bottom: 20px;
-            text-shadow: 3px 3px #bbdefb;
+            text-shadow: 2px 2px #e1bee7;
         }
         h2 {
-            color: #ff006e; /* Pink neon */
+            color: #d81b60; /* Merah gelap */
             font-size: 2.5em;
             margin-bottom: 15px;
         }
@@ -46,7 +46,7 @@
             margin-bottom: 25px;
         }
         button {
-            background-color: #ff006e;
+            background-color: #d81b60;
             color: white;
             border: none;
             padding: 15px 30px;
@@ -60,12 +60,12 @@
             display: inline-block;
         }
         button:hover {
-            background-color: #c90059;
+            background-color: #a5003f;
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
 
-        /* Gaya untuk Quiz Pilihan Ganda */
+        /* Gaya untuk Quiz */
         #quizGameArea .options-container {
             display: flex;
             flex-wrap: wrap;
@@ -74,9 +74,9 @@
             margin-top: 20px;
         }
         #quizGameArea .option-button {
-            background-color: #8ecae6; /* Biru muda */
-            color: #023047; /* Biru gelap */
-            border: 2px solid #219ebc;
+            background-color: #ede7f6; /* Ungu muda */
+            color: #4527a0; /* Ungu gelap */
+            border: 2px solid #7e57c2;
             padding: 12px 20px;
             border-radius: 25px;
             font-size: 1.1em;
@@ -86,7 +86,7 @@
             max-width: calc(50% - 20px);
         }
         #quizGameArea .option-button:hover {
-            background-color: #219ebc;
+            background-color: #7e57c2;
             color: white;
             transform: translateY(-2px);
         }
@@ -105,7 +105,7 @@
         #quizGameArea input[type="text"] {
             padding: 12px;
             border-radius: 8px;
-            border: 1px solid #219ebc;
+            border: 1px solid #7e57c2;
             font-size: 1.1em;
             width: calc(100% - 24px);
             max-width: 300px;
@@ -114,18 +114,19 @@
         }
         #quizGameArea input[type="text"]:focus {
             outline: none;
-            border-color: #ff006e;
-            box-shadow: 0 0 0 3px rgba(255, 0, 110, 0.2);
+            border-color: #d81b60;
+            box-shadow: 0 0 0 3px rgba(216, 27, 96, 0.2);
         }
         #quizFeedback {
             margin-top: 15px;
             font-weight: bold;
+            font-size: 1.4em; /* Lebih besar */
             color: #d32f2f;
         }
         #quizCount {
             font-size: 1.1em;
             margin-top: 15px;
-            color: #8338ec;
+            color: #6a1b9a;
         }
 
         /* Hasil Quiz */
@@ -154,7 +155,26 @@
             border-radius: 10px;
             margin-top: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border: 3px solid #ff006e; /* Border agar lebih menonjol */
+            border: 3px solid #d81b60;
+        }
+
+        /* Pesan jeda */
+        #pauseMessageArea {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            z-index: 1000;
+            cursor: pointer;
         }
 
         /* Efek confetti untuk kemenangan */
@@ -162,7 +182,7 @@
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: #ffeb3b; /* kuning */
+            background-color: #ffeb3b;
             animation: confetti-fall 3s forwards;
             opacity: 0;
             z-index: 99;
@@ -177,7 +197,7 @@
 <body>
     <div class="container" id="introContainer">
         <h1>Challenge Spesial Untuk Sania! ✨</h1>
-        <p>Aku punya sebuah tantangan seru buat kamu! Jawab **20 pertanyaan acak** ini dengan benar. Ada hadiah dan konsekuensi lucu menunggu! 😉</p>
+        <p>Aku punya sebuah tantangan seru buat kamu! Jawab **20 pertanyaan acak** ini dengan benar. Kalau kamu berhasil, ada hadiah spesial. Kalau tidak... ada tantangan lucu menunggu! 😉</p>
         <button onclick="startQuiz()">Mulai Tantangan Gila!</button>
     </div>
 
@@ -198,7 +218,7 @@
         <div id="successResult">
             <h2 class="result-message success-message">EDAN! Kamu HEBAT BANGET! 🎉</h2>
             <p style="font-size: 1.2em;">Selamat, Sania! Kamu berhasil menjawab <span id="finalScoreSuccess"></span> dari 20 pertanyaan dengan sempurna! Kamu memang yang paling jago dan paling kenal aku!</p>
-            <p style="font-size: 1.5em; color: #8338ec; font-weight: bold;">Hadiahmu spesial dari aku, ini dia! 😉</p>
+            <p style="font-size: 1.5em; color: #6a1b9a; font-weight: bold;">Hadiahmu spesial dari aku, ini dia! 😉</p>
             <img id="successImage" src="https://i.imgur.com/iliNnu4.jpeg" alt="Hadiah Spesial Kaka">
             <button onclick="startQuiz()">Main Lagi!</button>
         </div>
@@ -206,11 +226,15 @@
         <div id="failResult" style="display: none;">
             <h2 class="result-message fail-message">Ups! Belum Berhasil Sania! 😅</h2>
             <p style="font-size: 1.2em;">Sayang sekali, kamu hanya menjawab <span id="finalScoreFail"></span> pertanyaan dengan benar.</p>
-            <p style="font-size: 1.5em; color: #ff006e; font-weight: bold;">Tantanganmu: Kirim "PAP 50" ke aku sekarang juga! 😂 (Selfie lucu, ekspresi konyol, bebas!)</p>
+            <p style="font-size: 1.5em; color: #d81b60; font-weight: bold;">Tantanganmu: Kirim "PAP 50" ke aku sekarang juga! 😂 (Selfie lucu, ekspresi konyol, bebas!)</p>
             <p style="font-size: 1.1em; margin-top: 20px;">Klik tombol di bawah untuk kirim PAP 50 ke aku. Jangan curang ya! 😉</p>
             <a id="whatsappFailBtn" href="#" target="_blank" class="whatsapp-button button">Kirim PAP 50 Sekarang!</a>
-            <button onclick="startQuiz()">Coba Lagi Tantangannya!</button>
+            <button id="retryButtonAfterFail" onclick="startQuiz()" style="display: none;">Coba Lagi Tantangannya!</button>
         </div>
+    </div>
+
+    <div id="pauseMessageArea" style="display: none;">
+        <p>Kalem, ulah rurusuhan! Lanjut! 😉</p>
     </div>
 
     <script>
@@ -236,7 +260,8 @@
             {
                 type: "text",
                 question: "Kapan tanggal jadian kita? (contoh: 15 Juni)",
-                answer: "15 juni" // Ganti dengan tanggal jadian kalian yang sebenarnya!
+                answer: "15 juni", // Ganti dengan tanggal jadian kalian yang sebenarnya!
+                isAlwaysCorrect: true // Pertanyaan ini selalu dianggap benar
             },
             {
                 type: "mc",
@@ -358,6 +383,7 @@
             score = 0;
             document.getElementById('currentScore').innerText = score;
             document.getElementById('totalQuestionsCount').innerText = totalQuestions;
+            document.getElementById('retryButtonAfterFail').style.display = 'none'; // Sembunyikan tombol coba lagi
             displayQuestion();
         }
 
@@ -385,7 +411,7 @@
                         const button = document.createElement('button');
                         button.classList.add('option-button');
                         button.innerText = option;
-                        button.onclick = () => checkAnswer(option, quizData.answer, button, quizData.type);
+                        button.onclick = () => checkAnswer(option, quizData.answer, button, quizData.type, quizData.isAlwaysCorrect);
                         optionsContainer.appendChild(button);
                     });
                 } else if (quizData.type === "text") {
@@ -397,7 +423,7 @@
                     // Handle Enter key for text input
                     textAnswerInput.onkeyup = function(event) {
                         if (event.key === 'Enter') {
-                            checkAnswer(this.value, quizData.answer, null, quizData.type);
+                            checkAnswer(this.value, quizData.answer, null, quizData.type, quizData.isAlwaysCorrect);
                         }
                     };
                 }
@@ -406,10 +432,15 @@
             }
         }
 
-        function checkAnswer(selectedInput, correctAnswer, clickedButton = null, type) {
+        function checkAnswer(selectedInput, correctAnswer, clickedButton = null, type, isAlwaysCorrect = false) {
             const userAnswer = selectedInput.toLowerCase().trim();
             const feedbackElement = document.getElementById('quizFeedback');
-            const isCorrect = (userAnswer === correctAnswer.toLowerCase().trim());
+            let isCorrect = (userAnswer === correctAnswer.toLowerCase().trim());
+
+            // Logika untuk pertanyaan yang selalu benar
+            if (isAlwaysCorrect) {
+                isCorrect = true;
+            }
 
             if (type === "mc") {
                 const allOptionButtons = document.querySelectorAll('#optionsContainer .option-button');
@@ -417,12 +448,12 @@
 
                 if (isCorrect) {
                     feedbackElement.style.color = '#4CAF50';
-                    feedbackElement.innerText = "Benar! Kamu memang hebat! 🎉";
+                    feedbackElement.innerText = "Benar! Hebat! 👍😄"; // Emoticon benar
                     clickedButton.classList.add('correct');
                     score++;
                 } else {
                     feedbackElement.style.color = '#d32f2f';
-                    feedbackElement.innerText = "Kurang tepat, sayang! 😉";
+                    feedbackElement.innerText = "Kurang tepat! 😢"; // Emoticon sedih
                     clickedButton.classList.add('wrong');
                     // Highlight correct answer
                     allOptionButtons.forEach(button => {
@@ -439,23 +470,61 @@
 
                 if (isCorrect) {
                     feedbackElement.style.color = '#4CAF50';
-                    feedbackElement.innerText = "Benar! Jawabanmu akurat! 🎉";
+                    feedbackElement.innerText = "Benar! Akurat! 👍😄"; // Emoticon benar
+                    score++;
+                } else {
+                    feedbackElement.innerText = "Kurang tepat! 😢"; // Emoticon sedih
+                    clickedButton.classList.add('wrong');
+                    // Highlight correct answer
+                    allOptionButtons.forEach(button => {
+                        if (button.innerText.toLowerCase().trim() === correctAnswer.toLowerCase().trim()) {
+                            button.classList.add('correct');
+                        }
+                    });
+                }
+            } else if (type === "text") {
+                const textAnswerInput = document.getElementById('textAnswerInput');
+                const submitTextAnswerBtn = document.getElementById('submitTextAnswerBtn');
+                textAnswerInput.disabled = true;
+                submitTextAnswerBtn.disabled = true;
+
+                if (isCorrect) {
+                    feedbackElement.style.color = '#4CAF50';
+                    feedbackElement.innerText = "Benar! Akurat! 👍😄"; // Emoticon benar
                     score++;
                 } else {
                     feedbackElement.style.color = '#d32f2f';
-                    feedbackElement.innerText = `Salah! Jawaban benar: "${correctAnswer}" 😉`;
+                    feedbackElement.innerText = `Salah! Jawaban benar: "${correctAnswer}" 😈`; // Emoticon nertawain
                 }
             }
             
             document.getElementById('currentScore').innerText = score;
 
             currentQuestionIndex++;
-            setTimeout(displayQuestion, 2500); // Move to next question after 2.5 seconds
+            
+            // Logika pesan jeda "Kalem ulah rurusuhan"
+            if (currentQuestionIndex > 0 && currentQuestionIndex % 5 === 0 && currentQuestionIndex < totalQuestions) {
+                showPauseMessage();
+                setTimeout(() => {
+                    hidePauseMessage();
+                    displayQuestion();
+                }, 3000); // Tampilkan pesan 3 detik
+            } else {
+                setTimeout(displayQuestion, 2500); // Lanjut pertanyaan berikutnya setelah 2.5 detik
+            }
         }
 
         function checkTextAnswer() {
             const textAnswerInput = document.getElementById('textAnswerInput');
-            checkAnswer(textAnswerInput.value, shuffledQuestions[currentQuestionIndex].answer, null, "text");
+            checkAnswer(textAnswerInput.value, shuffledQuestions[currentQuestionIndex].answer, null, "text", shuffledQuestions[currentQuestionIndex].isAlwaysCorrect);
+        }
+
+        function showPauseMessage() {
+            document.getElementById('pauseMessageArea').style.display = 'flex';
+        }
+
+        function hidePauseMessage() {
+            document.getElementById('pauseMessageArea').style.display = 'none';
         }
 
 
@@ -468,7 +537,7 @@
             if (score >= minimumScoreForSuccess) {
                 // Success
                 document.getElementById('successResult').style.display = 'block';
-                tById('failResult').style.display = 'none'; //
+                document.getElementById('failResult').style.display = 'none';
                 triggerConfetti(); // Efek confetti untuk kemenangan
             } else {
                 // Fail
@@ -476,6 +545,12 @@
                 document.getElementById('failResult').style.display = 'block';
                 const whatsappLink = `https://wa.me/${whatsappFailNumber}?text=${encodeURIComponent(whatsappFailMessage)}`;
                 document.getElementById('whatsappFailBtn').href = whatsappLink;
+                // Tampilkan tombol coba lagi hanya setelah PAP button diklik (simulasi) atau setelah jeda
+                document.getElementById('whatsappFailBtn').onclick = () => {
+                    setTimeout(() => {
+                        document.getElementById('retryButtonAfterFail').style.display = 'inline-block';
+                    }, 1000); // Tunda sedikit agar tombol PAP terpicu
+                };
             }
         }
 
