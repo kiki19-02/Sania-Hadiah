@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perjalanan Bunga untuk Sania!</title>
     <style>
+        html, body { /* Pastikan html dan body bisa scroll */
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden; /* Hanya sembunyikan overflow horizontal */
+        }
         body {
             font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: center; /* Tetap pusatkan konten awal */
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%); /* Gradien biru muda dan pink sangat muda */
+            min-height: 100vh; /* Agar bisa pakai vh */
+            background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
             color: #4a4a4a;
             text-align: center;
-            overflow: hidden; /* Penting untuk tombol bergerak */
-            position: relative; /* Untuk tombol bergerak */
+            position: relative; /* Untuk tombol bergerak, tapi tidak hidden */
         }
         .container {
             background-color: rgba(255, 255, 255, 0.95);
@@ -26,17 +29,17 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             max-width: 600px;
             width: 90%;
-            margin: 20px auto;
+            margin: 20px auto; /* Margin auto untuk centering dan scroll */
             z-index: 10;
         }
         h1 {
-            color: #007bff; /* Biru cerah */
+            color: #007bff;
             font-size: 2.8em;
             margin-bottom: 20px;
             text-shadow: 1px 1px #e0f2f7;
         }
         h2 {
-            color: #e91e63; /* Pink */
+            color: #e91e63;
             font-size: 2.2em;
             margin-bottom: 20px;
         }
@@ -48,31 +51,31 @@
         }
         .center-text {
             text-align: center;
-            margin-top: 25px; /* Jarak untuk tombol di bawah teks */
+            margin-top: 25px;
         }
 
         #nextButton {
-            position: absolute; /* Tombol bisa bergerak bebas */
-            background-color: #ffc107; /* Kuning cerah */
+            position: fixed; /* Ubah ke fixed agar tidak terpengaruh scroll */
+            background-color: #ffc107;
             color: #333;
             border: none;
             padding: 15px 30px;
             border-radius: 50px;
             font-size: 1.2em;
             cursor: pointer;
-            transition: all 0.3s ease; /* Transisi halus saat bergerak */
+            transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 20; /* Agar di atas semua */
-            min-width: 150px; /* Lebar minimum */
+            z-index: 20;
+            min-width: 150px;
             text-align: center;
-            left: 50%; /* Posisi awal di tengah */
+            left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%); /* Pusatkan tombol */
-            animation: pulse 1.5s infinite alternate; /* Animasi berkedip */
+            transform: translate(-50%, -50%);
+            animation: pulse 1.5s infinite alternate;
         }
         #nextButton:hover {
             background-color: #ff9800;
-            transform: translate(-50%, -50%) scale(1.05); /* Sedikit membesar saat hover */
+            transform: translate(-50%, -50%) scale(1.05);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
         @keyframes pulse {
@@ -81,7 +84,7 @@
         }
 
         #flowerContainer {
-            display: none; /* Sembunyikan awal */
+            display: none;
             margin-top: 30px;
         }
         #flowerImage {
@@ -89,7 +92,7 @@
             height: auto;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            border: 4px solid #ff80ab; /* Border pink yang lebih tebal */
+            border: 4px solid #ff80ab;
         }
         .final-message {
             font-size: 1.5em;
@@ -111,7 +114,7 @@
         <h1>Sania Sayangku, Ada Rahasia! 🤫</h1>
         <p>Sania sayangku, ada sesuatu yang sangat penting, sangat mendalam, dan sangat spesial yang ingin aku sampaikan. Sesuatu yang sudah aku renungkan berhari-hari, bahkan berminggu-minggu, memikirkan bagaimana cara terbaik untuk mengungkapkannya. Ini bukan hal sepele, ini adalah puncak dari segala pemikiranku, esensi dari setiap helaan napasku ketika teringat akan dirimu. Kamu tahu kan, aku ini orangnya nggak suka basa-basi, tapi untuk hal sepenting ini, rasanya aku harus memberikan pengantar yang layak, yang bisa mencerminkan betapa besar makna ini bagiku.</p>
         <p>Jadi gini, kamu siap? Tarik napas dulu, buang perlahan. Pastikan kamu duduk dengan nyaman, di tempat yang tenang, tanpa gangguan. Matikan notifikasi HPmu sejenak, siapkan secangkir teh hangat atau kopi favoritmu, karena momen ini butuh konsentrasi penuh. Ini bukan sekadar kata-kata biasa, ini adalah sebuah manifestasi, sebuah perwujudan dari... ah, sudahlah, nanti kamu juga tahu sendiri. Intinya, ini sesuatu yang akan mengubah caramu memandang dunia (mungkin lebay sih, tapi ya begitulah perasaanku saat ini).</p>
-        <p>Aku bahkan sampai bergadang memikirkan bagaimana aku akan menyampaikan ini. Apakah lewat puisi? Surat cinta klasik? Lagu? Atau mungkin tarian kontemporer? Tapi rasanya semua itu belum cukup. Ini butuh sesuatu yang lebih personal, lebih 'aku', yang bisa langsung sampai ke hatimu tanpa filter. Maka, setelah meditasi panjang di bawah purnama (oke, ini fiksi, aku cuma di kamar kok), aku memutuskan untuk menggunakan media ini. Media yang sederhana, tapi penuh makna. Kamu pasti penasaran banget kan? Udah geregetan pengen tahu? Nah, bagus! Itu tandanya kamu siap!</p>
+        <p>Aku bahkan sampai bergadang memikirkan bagaimana aku akan menyampaikan ini. Apakah lewat puisi? Surat cinta klasik? Lagu? Atau mungkin tarian kontemporer? Tapi rasanya semua itu belum cukup. Ini butuh sesuatu yang lebih personal, lebih 'aku', yang bisa langsung sampai ke hatimu tanpa filter. Maka, setelah meditasi panjang di bawah purnama (oke, ini fiksi, aku cuma di kamar, kok), aku memutuskan untuk menggunakan media ini. Media yang sederhana, tapi penuh makna. Kamu pasti penasaran banget kan? Udah geregetan pengen tahu? Nah, bagus! Itu tandanya kamu siap!</p>
         <p class="center-text">Sekarang, kamu sudah siap mental? Yakin banget? Kalau sudah siap, klik tombol 'Selanjutnya' ini untuk melanjutkan perjalanan ini. Tapi hati-hati ya, dia agak bandel dan suka pindah-pindah!</p>
     </div>
 
@@ -133,18 +136,22 @@
             clickCount++;
             const button = document.getElementById('nextButton');
 
-            if (clickCount < maxClicks) {
-                // Pindahkan tombol secara acak
-                const maxX = window.innerWidth - button.offsetWidth;
-                const maxY = window.innerHeight - button.offsetHeight;
-                
-                const newX = Math.random() * maxX;
-                const newY = Math.random() * maxY;
+            // Hitung ulang posisi maksimum berdasarkan ukuran jendela saat ini
+            const maxX = window.innerWidth - button.offsetWidth;
+            const maxY = window.innerHeight - button.offsetHeight;
+            
+            // Pastikan tombol tetap di dalam viewport
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
 
-                button.style.left = `${newX}px`;
-                button.style.top = `${newY}px`;
-                button.innerText = `Tangkap Aku! (${clickCount}/${maxClicks})`;
-            } else {
+            // Pastikan tombol tidak terlalu dekat dengan tepi
+            const padding = 20; // Jarak dari tepi
+            button.style.left = `${Math.max(padding, Math.min(newX, maxX - padding))}px`;
+            button.style.top = `${Math.max(padding, Math.min(newY, maxY - padding))}px`;
+            
+            button.innerText = `Tangkap Aku! (${clickCount}/${maxClicks})`;
+
+            if (clickCount >= maxClicks) {
                 // Setelah maxClicks, tampilkan bunga
                 document.getElementById('introContainer').style.display = 'none';
                 button.style.display = 'none'; // Sembunyikan tombol
