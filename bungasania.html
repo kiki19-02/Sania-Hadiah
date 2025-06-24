@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perjalanan Bunga untuk Sania!</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+            /* overflow-y: auto; */ /* Hapus ini atau ganti auto */
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Ganti center ke flex-start agar konten di atas bisa discroll */
+            align-items: center;
+            min-height: 100vh;
+            background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+            color: #4a4a4a;
+            text-align: center;
+            position: relative;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 90%;
+            margin: 20px auto;
+            z-index: 10;
+        }
+        h1 {
+            color: #007bff;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px #e0f2f7;
+        }
+        h2 {
+            color: #e91e63;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .center-text {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        /* Gaya untuk tombol statis "Mulai Tantangan" */
+        #startJourneyButton {
+            background-color: #007bff; /* Biru */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+        }
+        #startJourneyButton:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Gaya untuk tombol bergerak "Selanjutnya" */
+        #nextButton {
+            position: fixed; /* Penting agar bisa bergerak di seluruh viewport */
+            background-color: #ffc107; /* Kuning cerah */
+            color: #333;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease; /* Transisi halus saat bergerak */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 20;
+            min-width: 150px;
+            text-align: center;
+            /* Posisi awal disembunyikan dan akan diatur oleh JS */
+            display: none; 
+        }
+        #nextButton:hover {
+            background-color: #ff9800;
+            transform: scale(1.05); /* Sedikit membesar saat hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+        /* Animasi pulse akan ditambahkan oleh JS saat tombol bergerak */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+
+        #flowerContainer {
+            display: none;
+            margin-top: 30px;
+        }
+        #flowerImage {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 4px solid #ff80ab;
+        }
+        .final-message {
+            font-size: 1.5em;
+            margin-top: 30px;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .whatsapp-button-final {
+            background-color: #25D366;
+            margin-top: 20px;
+        }
+        .whatsapp-button-final:hover {
+            background-color: #1DA851;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="introContainer">
+        <h1>Sania Sayangku, Ada Rahasia! 🤫</h1>
+        <p>Sania sayangku, ada sesuatu yang sangat penting, sangat mendalam, dan sangat spesial yang ingin aku sampaikan. Sesuatu yang sudah aku renungkan berhari-hari, bahkan berminggu-minggu, memikirkan bagaimana cara terbaik untuk mengungkapkannya. Ini bukan hal sepele, ini adalah puncak dari segala pemikiranku, esensi dari setiap helaan napasku ketika teringat akan dirimu. Kamu tahu kan, aku ini orangnya nggak suka basa-basi, tapi untuk hal sepenting ini, rasanya aku harus memberikan pengantar yang layak, yang bisa mencerminkan betapa besar makna ini bagiku.</p>
+        <p>Jadi gini, kamu siap? Tarik napas dulu, buang perlahan. Pastikan kamu duduk dengan nyaman, di tempat yang tenang, tanpa gangguan. Matikan notifikasi HPmu sejenak, siapkan secangkir teh hangat atau kopi favoritmu, karena momen ini butuh konsentrasi penuh. Ini bukan sekadar kata-kata biasa, ini adalah sebuah manifestasi, sebuah perwujudan dari... ah, sudahlah, nanti kamu juga tahu sendiri. Intinya, ini sesuatu yang akan mengubah caramu memandang dunia (mungkin lebay sih, tapi ya begitulah perasaanku saat ini).</p>
+        <p>Aku bahkan sampai bergadang memikirkan bagaimana aku akan menyampaikan ini. Apakah lewat puisi? Surat cinta klasik? Lagu? Atau mungkin tarian kontemporer? Tapi rasanya semua itu belum cukup. Ini butuh sesuatu yang lebih personal, lebih 'aku', yang bisa langsung sampai ke hatimu tanpa filter. Maka, setelah meditasi panjang di bawah purnama (oke, ini fiksi, aku cuma di kamar, kok), aku memutuskan untuk menggunakan media ini. Media yang sederhana, tapi penuh makna. Kamu pasti penasaran banget kan? Udah geregetan pengen tahu? Nah, bagus! Itu tandanya kamu siap!</p>
+        <p class="center-text">Sekarang, kamu sudah siap mental? Yakin banget? Kalau sudah siap, klik tombol 'Mulai Tantangan Gerak!' ini untuk melanjutkan perjalanan ini. Ini dia baru tantangannya! 😉</p>
+        <button id="startJourneyButton" onclick="startMovingButtonChallenge()">Mulai Tantangan Gerak!</button>
+    </div>
+
+    <button id="nextButton" onclick="handleNextClick()">Tangkap Aku! (0/10)</button>
+
+    <div class="container" id="flowerContainer" style="display: none;">
+        <h2>Ini Dia Hadiah Spesial untukmu! 🌸</h2>
+        <img id="flowerImage" src="https://i.imgur.com/xgwQ8hf.png" alt="Bunga Spesial untuk Sania">
+        <p class="final-message">Semoga bunga ini bisa bikin harimu seindah senyummu, Sayang.</p>
+        <p class="final-message">Dan ada pesan khusus lagi yang mau aku sampaiin... 😉</p>
+        <button onclick="revealPantun()">Lihat Pesan Rahasia!</button>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        const maxClicks = 10; // Jumlah klik sebelum bunga muncul
+
+        function startMovingButtonChallenge() {
+            document.getElementById('introContainer').style.display = 'none'; // Sembunyikan intro dan tombol statis
+            document.getElementById('startJourneyButton').style.display = 'none';
+
+            const nextButton = document.getElementById('nextButton');
+            nextButton.style.display = 'block'; // Tampilkan tombol bergerak
+            
+            // Set posisi awal random agar tidak langsung di tengah lagi
+            moveButtonRandomly(nextButton); 
+            // Tambahkan animasi pulse setelah mulai bergerak
+            nextButton.style.animation = 'pulse 1.5s infinite alternate'; 
+        }
+
+        function handleNextClick() {
+            clickCount++;
+            const button = document.getElementById('nextButton');
+
+            if (clickCount < maxClicks) {
+                // Pindahkan tombol secara acak
+                moveButtonRandomly(button);
+                button.innerText = `Tangkap Aku! (${clickCount}/${maxClicks})`;
+            } else {
+                // Setelah maxClicks, tampilkan bunga
+                document.getElementById('introContainer').style.display = 'none'; // Pastikan intro sudah hilang
+                button.style.display = 'none'; // Sembunyikan tombol
+                document.getElementById('flowerContainer').style.display = 'block';
+            }
+        }
+
+        function moveButtonRandomly(button) {
+            // Hitung ulang posisi maksimum berdasarkan ukuran jendela saat ini
+            // Kurangi ukuran tombol itu sendiri agar tidak keluar layar
+            const maxX = window.innerWidth - button.offsetWidth;
+            const maxY = window.innerHeight - button.offsetHeight;
+            
+            // Pastikan tombol tetap di dalam viewport dan tidak terlalu dekat tepi
+            const padding = 20; // Jarak dari tepi
+            const newX = Math.random() * (maxX - 2 * padding) + padding;
+            const newY = Math.random() * (maxY - 2 * padding) + padding;
+
+            button.style.left = `${newX}px`;
+            button.style.top = `${newY}px`;
+        }
+
+
+        function revealPantun() {
+            const whatsappNumber = "6282295941919"; // Nomor HP lo
+            const pantunMessage = `Buah durian di atas peti,\nDibawa Abang ke Kota Batu.\nSenyum manismu memikat hati,\nBoleh dong kirim satu PAP-mu?`;
+            
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(pantunMessage)}`;
+            
+            // Redirect ke WhatsApp
+            window.location.href = whatsappLink;
+        }
+    </script>
+</body>
+</html>
